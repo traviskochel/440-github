@@ -1,0 +1,536 @@
+//regions: for global elements such as header, footer, or main nav, whose attributes are standalone and don't have a great deal of reuse.
+
+//------------------------------------------
+// filmmaker sign up
+//------------------------------------------
+
+
+.header-penny {
+  width: 150px;
+  position: relative;
+  text-align: left;
+}
+
+.thanks{
+  .fa-plus {margin:0 25px;}
+}
+
+.filmmaker-nav {
+  li {
+    margin: 0;
+  }
+
+  a {
+    @extend .fa;
+    @extend .fa-circle-o;
+    @include border-radius(20px);
+    padding: 6px 7px 5px 7px;
+    margin: 0 0.2em;
+    color: $color-dark;
+
+    &:hover {
+      @extend .fa-circle;
+      color: $color-dark;
+      margin: 0 0.2em;
+    }
+
+    .color-reversed & {
+      color: $color-light;
+
+      &:hover {
+        color: $color-yellow;
+      }
+    }
+
+    &.disabled_nav {
+      cursor: default;
+      color: $color-gray-9;
+
+      &:hover {
+        @extend .fa-circle-o;
+      }
+
+      .color-reversed & {
+        color: $color-gray-3;
+      }
+    }
+  }
+
+  li.active {
+    a {
+      @extend .fa-circle;
+      background: $color-yellow;
+
+      .color-reversed & {
+        color: $color-dark;
+
+        &:hover {
+          color: $color-yellow;
+        }
+      }
+    }
+  }
+
+}
+
+
+
+//------------------------------------------
+// clip uploader
+//------------------------------------------
+
+
+.clip-uploader {
+  @include border-radius(4px);
+  padding: 1em 1.25em 1.25em;
+  border-color: $color-gray-6;
+
+  .files-hovering &, {
+    background-color: $color-gray-9;
+    border-color: $color-gray-4;
+  }
+
+  #modal & {
+    margin-bottom: 1em;
+  }
+
+
+  .icon {
+    font-size: 3em;
+  }
+
+  .helper {
+    font-size: 1em;
+    font-family: $font-sans;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    line-height: 1.1em;
+  }
+
+}
+
+a.clip-uploader {
+  display: block;
+  color: $color-gray-6;
+
+  &:hover {
+    color: $color-gray-3;
+    border-color: $color-gray-3;
+  }
+
+  &:active {
+    color: $color-gray-1;
+    border-color: $color-gray-1;
+  }
+}
+
+.add-clips {
+  padding: 1.6em 1.6em 0;
+}
+
+
+.replace-clip {
+  .upload {
+    background-color: rgba($color-dark, .8);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+  }
+  .upload-inner {
+    @include border-radius(3px);
+    background-color: $color-light;
+    left: 25%;
+    width: 50%;
+  }
+}
+
+
+//------------------------------------------
+// stories index
+//------------------------------------------
+
+.stories-list {
+  .story {
+    @include box-sizing(border-box);
+    @include border-radius(2px);
+
+    position: relative;
+    margin-bottom: 1.65em;
+    border-top: 5px solid transparent;
+
+    &.hovering {
+      @include box-shadow;
+
+      border-top: 5px solid $color-yellow;
+    }
+
+  }
+}
+
+
+//------------------------------------------
+// stories show
+//------------------------------------------
+
+.cover {
+  background-color: $color-gray-3;
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+
+.story-overview {
+  margin: 1.5em 0;
+
+  .title {
+    margin-top: -0.3em;
+  }
+
+  .collaborators-list {
+    color: $color-med-gray;
+  }
+
+  .status-counts {
+    i {
+      width: 1.3em;
+    }
+  }
+
+}
+
+.chapters {
+  z-index: 100;
+
+  .stuck & {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    //overflow-y: auto;
+  }
+}
+
+.chapter {
+  position: relative;
+
+  .title {
+    float: left;
+    width: 80%;
+    display: block
+  }
+  .clip_count {
+    @include box-sizing(border-box);
+    width: 20%;
+    font-family: $font-sans;
+    font-size: 1em;
+    position: relative;
+    vertical-align: middle;
+  }
+  .edit-chapter {
+    margin: 0 .2em;
+    line-height: 1em;
+  }
+}
+
+.clip {
+  @include border-radius(2px);
+  margin-top: 5px;
+
+  .clip-contents {
+    @include border-radius(2px);
+  }
+
+  &.hovering.hovering-trigger, &:hover.hovering-trigger {
+    @include box-shadow;
+  }
+  &.selected-border, &.selected  {
+    @include box-shadow;
+    margin-top: 0;
+    border-top: 5px solid $color-yellow;
+  }
+
+  &.padded {
+    padding-top: .6em;
+  }
+
+  .checkbox {
+    top: .08em;
+    position: relative;
+    margin-right: .2em;
+  }
+
+  .comments {
+    position: relative;
+    top: -.1em;
+    display: none;
+
+    @include breakpoint($media-sm) {
+      display: block;
+    }
+  }
+
+  .chapter_select {
+    width: 100%;
+    font-size: .7em;
+  }
+  .info-row-2 {
+    float: left;
+    width: 85%;
+    border-top: 1px solid $color-gray-9;
+
+    i {
+      margin-right: .5em;
+    }
+  }
+
+  .dropdown-parent {
+    display: block;
+    float: right;
+    width: 15%;
+    border-top: 1px solid $color-gray-9;
+    border-left: 1px solid $color-gray-9;
+
+    .trigger-click-dropdown{
+      display: block;
+      text-align: center;
+    }
+  }
+
+}
+
+
+.story-clips {
+  clear: both;
+  position: relative;
+
+  &.editor-closed {
+    //@include grid-span(12, 2);
+    clear: both;
+
+    .chapters {
+      @include grid-span(3, 2);
+    }
+
+    .clips{
+      @include grid-span(9, 5);
+
+      .box {
+        @extend .grid-3;
+        @extend .nest-9;
+        @extend .break-3;
+      }
+    }
+
+    .clip-editor {
+      @include grid-span(4, 11);
+    }
+
+  }
+  &.editor-open {
+    //@include grid-span(9, 2);
+    clear: both;
+
+    .chapters {
+      @include grid-span(2, 1);
+    }
+
+    .clips {
+      @include grid-span(8, 3);
+
+      @include breakpoint($media-sm) {
+        @include grid-span(9, 3);
+      }
+
+      .box {
+        @include breakpoint($media-xxs $media-sm){
+          @include grid-nest-cols(4, 8);
+          @include break-grid(2);
+        }
+
+        @include breakpoint($media-sm){
+          @include grid-nest-cols(3, 9);
+          @include break-grid(3);
+        }
+      }
+    }
+
+    .clip-editor {
+      @include grid-span(4, 11);
+
+      @include breakpoint($media-sm) {
+        @include grid-span(3, 12);
+      }
+
+    }
+
+  }
+
+}
+
+.indicator {
+  @extend .fa;
+  @extend .fa-chevron-up;
+
+  position: absolute;
+  right: 0;
+  text-align: right;
+  padding-top: .2em;
+  font-size: .8em;
+
+  .collapsed &, .collapsing & {
+    @extend .fa-chevron-down;
+  }
+  
+  .collapsed.expanding & {
+    @extend .fa-chevron-up;
+  }
+}
+
+.clip-editor {
+  @include box-shadow($color-gray-9 -3px 0 7px 0px);
+  position: absolute;
+  top:0;
+  //min-height: 500px;
+  right: 0;
+  overflow-y: auto;
+
+  .stuck & {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .section-title {
+      margin-bottom: .7em;
+      position: relative;
+      a {
+        display: block;
+        padding-right: 2em;
+      }
+      
+  }
+
+  .collapse-content-inner {
+    padding: 0 0 1em;
+  }
+  
+  .collapsed {
+    .collapse-content {
+      display: none;
+    }
+  }
+  .not-admin {
+    .section-title {
+      display: none;
+    }
+
+    .collapsed .collapse-content {
+      display: block;
+    }
+
+    .collapse-parent {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    .collapse-content-inner {
+      padding: 0;
+    }
+  }
+
+  .checkbox, .radio, .boolean {
+    font-size: 0.8em;
+  }
+
+}
+
+
+.single-clip {
+  position: relative;
+  .main-col {
+
+  }
+  .single-clip-editor {
+    position: absolute;
+    top: 0;
+    overflow-y: auto;
+
+    .stuck & {
+      @include layout(14) {
+        @include float-span(4);
+      }
+      position: fixed;
+      top:0;
+    }
+  }
+}
+
+
+
+//------------------------------------------
+// collaborators
+//------------------------------------------
+
+.collaborator {
+  .form-inputs {
+    width: 90%;
+  }
+  .delete-collaborator {
+    float: right;
+    width: 10%;
+    overflow: visible;
+    font-size: 1.4em;
+    line-height: 1.6em;
+    vertical-align: middle;
+    text-align: right;
+
+    &.special {
+      line-height: 1.75em;
+    }
+  }
+}
+
+
+//------------------------------------------
+// clips form
+//------------------------------------------
+
+.clip_season_list, .clip_month_list, .clip_emotion_list, .clip_subject_movement_list, .clip_color_list, .clip_eye_color_list, .clip_camera_movement_list {
+
+  @include columns(2);
+  padding:0;
+  margin:0;
+  border:none;
+
+  .semi-compact-border-form &.form-group {
+    margin-bottom: 0;
+  }
+}
+
+
+// hides/shows people fields
+.people-fields-wrap {
+  .single_form, .couple_form, .group_form {
+    display:none;
+  }
+
+  &.single-on, &.couple-on, &.group-on {
+    .single_form {
+      display:block;
+    }
+  }
+
+  &.couple-on, &.group-on {
+    .group_form, .couple_form {
+      display:block;
+    }
+  }
+}
